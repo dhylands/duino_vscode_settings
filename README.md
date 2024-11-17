@@ -13,12 +13,26 @@ each type of Arduino Board that you use.
 duino_vscode_settings will tries to merge any existing options so as not to overwrite
 customizations.
 
+## Installation
+
+```bash
+pip3 install duino_vscode_settings
+```
+or
+```bash
+python3 -m pip install diono_vscode_settings
+```
+
+## GitHub Repository
+
+You can find the source code on [github](https://github.com/dhylands/duino_vscode_settings.git)
+
 ## Typical Usage
 
 ```bash
 make-vscode-settings ./.vscode/c_cpp_properties.json -- g++ -DFOO -IsomePath -IotherPath
 ```
-will generate a c_cpp_properties.json which looks something like this:
+will generate a `c_cpp_properties.json` which looks something like this:
 ```json
 {
     "configurations": [
@@ -73,8 +87,8 @@ This will produce this output:
     -I/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/variants/waveshare_rp2040_zero \
     /tmp/arduino/sketches/7F7CB296241CD53CB3A2A1C9D0C29E09/sketch/NeoPixelExample.ino.cpp -o /dev/null
 ```
-If you assigned the above to a variable called `COMPILER_CMD` then I would run make-vscode-settings
-like this:
+If you assigned the above to a variable called `COMPILER_CMD` then I would run
+`make-vscode-settings` like this:
 ```bash
 COMPILER_CMD=$(arduino-cli compile --verbose --fqbn rp2040:rp2040:waveshare_rp2040_zero 2>/dev/null | grep g++ | grep .ino.cpp | grep -v -- -lc | tail -1)
 make-vscode-settings -c Arduino-zero ./.vscode/c_cpp_properties.json -- ${COMPILER_CMD}
@@ -90,11 +104,9 @@ and that would generate `./.vscode/c_cpp_properties.json` with contents somethin
             "defines": [
                 "ARDUINO=10607",
                 "ARDUINO_ARCH_RP2040",
-                "ARDUINO_VARIANT=\"waveshare_rp2040_zero\"",
                 "ARDUINO_WAVESHARE_RP2040_ZERO",
                 "ARM_MATH_CM0_FAMILY",
                 "ARM_MATH_CM0_PLUS",
-                "BOARD_NAME=\"WAVESHARE_RP2040_ZERO\"",
                 "CFG_TUSB_MCU=OPT_MCU_RP2040",
                 "CYW43_LWIP=1",
                 "F_CPU=133000000L",
@@ -109,21 +121,98 @@ and that would generate `./.vscode/c_cpp_properties.json` with contents somethin
                 "USBD_MAX_POWER_MA=500",
                 "USBD_PID=0x0003",
                 "USBD_VID=0x2e8a",
-                "USB_MANUFACTURER=\"Waveshare\"",
-                "USB_PRODUCT=\"RP2040",
                 "WIFICC=CYW43_COUNTRY_WORLDWIDE"
             ],
             "includePath": [
-                "/tmp/arduino/sketches/7F7CB296241CD53CB3A2A1C9D0C29E09/core",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/include/rp2040",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/include/rp2040/pico_base",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2040/hardware_regs/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2040/hardware_structs/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2040/pico_platform/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_btstack/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_cyw43_arch/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_cyw43_driver/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/lib/cyw43-driver/src",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/lib/btstack/src",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/lib/btstack/3rd-party/bluedroid/decoder/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/lib/btstack/3rd-party/bluedroid/encoder/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/lib/btstack/platform/embedded",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2040/Include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/cores/rp2040/api/deprecated-avr-comp",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/lib/tinyusb/src",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/boards/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/hardware_claim/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_base/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_base_headers/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_binary_info/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_bit_ops/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_divider/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_stdlib/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_sync/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_time/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_usb_reset_interface/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_util/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_stdlib_headers/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/common/pico_usb_reset_interface_headers/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/cmsis/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Core/Include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_adc/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_base/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_boot_lock/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_clocks/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_divider/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_dma/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_exception/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_flash/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_gpio/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_i2c/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_interp/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_irq/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_rtc/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_pio/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_pll/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_pwm/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_resets/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_spi/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_sync/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_sync_spin_lock/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_timer/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_uart/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_vreg/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_watchdog/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/hardware_xosc/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_aon_timer/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_async_context/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_bootrom/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_double/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_float/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_int64_ops/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_lwip/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_multicore/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_platform/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_platform_compiler/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_platform_sections/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_platform_panic/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_printf/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_runtime/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_runtime_init/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_rand/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_stdio/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_stdio_uart/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/src/rp2_common/pico_unique_id/include",
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/pico-sdk/lib/lwip/src/include",
                 "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/include",
                 "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/cores/rp2040",
-                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/variants/waveshare_rp2040_zero"
+                "/home/dhylands/.arduino15/packages/rp2040/hardware/rp2040/4.0.3/variants/waveshare_rp2040_zero",
+                "/home/dhylands/Arduino/libraries/Adafruit_NeoPixel"
             ],
             "intelliSenseMode": "gcc-arm",
             "mergeConfigurations": true,
             "name": "Arduino-zero"
         }
-    ]
+    ],
+    "version": 4
 }
 ```
  I typically make a seperate VSCode workspace for each Arduino project, and when I open the
