@@ -182,7 +182,6 @@ class Settings:
             self.set_if_not_in(configuration, 'intelliSenseMode', 'gcc-arm')
         configuration['defines'] = self.option_defs
         configuration['includePath'] = self.option_incs
-        print(configuration['includePath'])
         self.set_if_not_in(configuration, 'cStandard',
                            self.compiler_c_standard)
         self.set_if_not_in(configuration, 'cppStandard',
@@ -192,7 +191,6 @@ class Settings:
         print(f'Writing {filename} ...')
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(json.dumps(cfg, indent=4, sort_keys=True))
-
         print('Done')
 
     def parse_args(self) -> Union[argparse.Namespace, None]:
@@ -255,6 +253,7 @@ class Settings:
 
 
 def main() -> None:
+    """main entry point for make-vscode-settings"""
     settings = Settings()
     settings.main()
 
