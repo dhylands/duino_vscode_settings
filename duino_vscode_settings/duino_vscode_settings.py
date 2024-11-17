@@ -254,6 +254,10 @@ class Settings:
         self.make_settings(args.filename, args.config, args.options)
 
 
-if __name__ == '__main__':
+def main() -> None:
     settings = Settings()
     settings.main()
+
+
+if __name__ == '__main__':
+    main()
