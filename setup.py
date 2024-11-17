@@ -4,6 +4,7 @@ Setup file for the duino_vscode_settings module.
 
 from pathlib import Path
 import sys
+
 if sys.version_info < (3, 9):
     print('duino_vscode_settings requires Python 3.9 or newer.')
     sys.exit(1)
