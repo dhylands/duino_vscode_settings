@@ -33,7 +33,7 @@ class Settings:
         self.option: str = ''
         self.compiler_path = 'g++'
         self.compiler_c_standard: str = 'gnu11'
-        self.compiler_cpp_standard: str = 'g++17'
+        self.compiler_cpp_standard: str = 'gnu++17'
         self.debug = self.debug_disabled_func
 
     @staticmethod
