@@ -176,7 +176,7 @@ class Settings:
         configuration = self.find_configuration(configurations, config_name)
         self.set_if_not_in(configuration, 'compilerPath', self.compiler_path)
         if config_name == 'Linux':
-            self.set_if_not_in(configuration, 'compilerArgs', '-m64')
+            self.set_if_not_in(configuration, 'compilerArgs', ['-m64'])
             self.set_if_not_in(configuration, 'intelliSenseMode', 'gcc-x64')
         else:
             self.set_if_not_in(configuration, 'intelliSenseMode', 'gcc-arm')
